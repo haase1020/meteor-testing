@@ -1,11 +1,16 @@
 import React from 'react';
 
-const tasks = [
-  {_id: 1, text: 'Dare greatly'},
-  {_id: 2, text: 'Love passionately'},
-  {_id: 3, text: 'Rejoice in the Lord!!'},
-];
-
-export const Task = ({ task })=> {
-    return <li>{task.text}</li>
-}
+export const Task = ({ task, onCheckboxClick, onDeleteClick }) => {
+  return (
+    <li>
+      <input
+        type="checkbox"
+        checked={!!task.isChecked}
+        onClick={() => onCheckboxClick(task)}
+        readOnly
+      />
+      <span>{task.text}</span>
+      <button onClick={() => onDeleteClick(task)}>&times;</button>
+    </li>
+  );
+};
