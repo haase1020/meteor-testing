@@ -4,5 +4,10 @@
   "pluginsFile": "tests/cypress/plugins/index.js",
   "screenshotsFolder": "tests/cypress/screenshots",
   "supportFile": "tests/cypress/support/index.js",
-  "videosFolder": "tests/cypress/videos"
+  "videosFolder": "tests/cypress/videos",
+  "env": {
+    "codeCoverage": {
+      "url": "http://localhost:3000/__coverage__"
+    }
+  }
 }

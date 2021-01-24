@@ -13,5 +13,10 @@
     "meteor-node-stubs": "^1.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "@cypress/code-coverage": "^3.9.2",
+    "babel-plugin-istanbul": "^6.0.0",
+    "nyc": "^15.1.0"
   }
 }

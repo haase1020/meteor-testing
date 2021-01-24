@@ -36,3 +36,11 @@ Meteor.startup(() => {
     ].forEach((taskText) => insertTask(taskText, user));
   }
 });
+
+// RestRouter.get(
+//   "/__coverage__",
+//   Meteor.bindEnvironment((req, res) => {
+//     const result = { coverage: global.__coverage__ };
+//     res.send(result);
+//   })
+// );
