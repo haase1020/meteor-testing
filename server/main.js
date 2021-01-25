@@ -3,6 +3,13 @@ import { TasksCollection } from "/imports/db/TasksCollection";
 import { Accounts } from "meteor/accounts-base";
 import "/imports/api/tasksMethods";
 import "/imports/api/tasksPublications";
+const express = require("express");
+const app = express();
+
+if (global.__coverage__) {
+  require("@cypress/code-coverage/middleware/express")(app);
+}
+const port = 3000;
 
 const SEED_USERNAME = "meteorite";
 const SEED_PASSWORD = "password";
@@ -37,10 +44,10 @@ Meteor.startup(() => {
   }
 });
 
-// RestRouter.get(
-//   "/__coverage__",
-//   Meteor.bindEnvironment((req, res) => {
-//     const result = { coverage: global.__coverage__ };
-//     res.send(result);
-//   })
-// );
+app.get(
+  "/__coverage__",
+  Meteor.bindEnvironment((req, res) => {
+    const result = { coverage: global.__coverage__ };
+    res.send(result);
+  })
+);

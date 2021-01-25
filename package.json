@@ -1,15 +1,28 @@
 {
   "name": "meteor-testing",
   "private": true,
+  "babel": {
+    "env": {
+      "COVERAGE": {
+        "plugins": [
+          "istanbul"
+        ]
+      }
+    }
+  },
   "scripts": {
     "start": "meteor run",
     "cypress": "cypress open",
-    "cypress:headless": "cypress run",
-    "visualize": "meteor --production --extra-packages bundle-visualizer"
+    "test": "cypress run",
+    "visualize": "meteor --production --extra-packages bundle-visualizer",
+    "coverage": "nyc npm run test",
+    "runtest": "BABEL_ENV=coverage meteor run --settings cypress.json"
   },
   "dependencies": {
     "@babel/runtime": "^7.11.2",
     "bcrypt": "^5.0.0",
+    "express": "^4.17.1",
+    "istanbul-lib-coverage": "^3.0.0",
     "meteor-node-stubs": "^1.0.1",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
@@ -18,5 +31,12 @@
     "@cypress/code-coverage": "^3.9.2",
     "babel-plugin-istanbul": "^6.0.0",
     "nyc": "^15.1.0"
+  },
+  "nyc": {
+    "report-dir": "cypress-coverage",
+    "reporter": [
+      "text",
+      "json"
+    ]
   }
 }
